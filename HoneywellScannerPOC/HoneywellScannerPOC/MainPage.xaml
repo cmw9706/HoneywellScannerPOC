@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HoneywellScannerPOC"
+             x:Class="HoneywellScannerPOC.MainPage">
+
+    <StackLayout>
+        <Button Text="Lets do a scan" Clicked="On_ClickedScan" />
+
+        <Label x:Name="scannerReady" IsVisible="False" Text="Scanner is ready" TextColor="Black"/>
+
+        <Label FontSize="32" x:Name="myLabel" TextColor="Black"/>
+
+        <Button Text="Lets do a scan" Clicked="On_ClickedSave" />
+    </StackLayout>
+
+</ContentPage>
