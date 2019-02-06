@@ -11,6 +11,9 @@ namespace HoneywellScannerPOC.Services
     public class ScanService 
     {
         private BarcodeReader _barcodeReader;
+        /// <summary>
+        /// WARNING: You must call InitializeService() before subscrbing to this EventHandler
+        /// </summary>
         public EventHandler OnScanComplete { get; set; }
 
         /// <summary>
@@ -74,6 +77,13 @@ namespace HoneywellScannerPOC.Services
             _barcodeReader.BarcodeDataReady += _barcodeReader_BarcodeDataReady;
         }
 
+        /// <summary>
+        /// WPF and Xamarin allow for event handlers to use async void
+        /// It's possible that in the long run, it might just be better to wrap the await CloseReaderAsync();
+        /// in a Task.Run(async()=>await CloseReaderAsync()); and remove the async?
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void _barcodeReader_BarcodeDataReady(object sender, BarcodeDataArgs e)
         {
             _barcodeReader.BarcodeDataReady -= _barcodeReader_BarcodeDataReady;
